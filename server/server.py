@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 import time 
 from datetime import datetime, time
-from pytz import timezone 
 from flask_cors import CORS
 import requests
 import json
@@ -45,7 +44,7 @@ def get_person():
     command = request.form
     image = command["image"].split(",")[1]
     imgdata = base64.b64decode(image)
-    filename = "../Picture/person.jpg"
+    filename = "Picture/person.jpg"
     with open(filename, 'wb') as f:
         f.write(imgdata)
     img=mpimg.imread(filename)
@@ -63,7 +62,7 @@ def get_person():
     for key in fashion_content:
         content[key] = fashion_content[key]
     print(content)
-    with open('../person.json', 'w') as outfile:
+    with open('person.json', 'w') as outfile:
         json.dump(content, outfile)
     return "Success"
 

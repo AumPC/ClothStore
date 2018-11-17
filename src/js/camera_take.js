@@ -178,7 +178,7 @@ function previewFile(){
 }
 
 function send_api(pic) {
-  $.post("http://192.168.1.127:65520/send_person", { image : pic} , function(result){
+  $.post("http://192.168.1.27:65520/send_person", { image : pic} , function(result){
     console.log(result)
   })
 }
