@@ -26,12 +26,22 @@
         </div>
         <div class="row" id="row" style="text-align: center;">
             <div class="col">
-
+                <form method="post" enctype="multipart/form-data">
+                    <input type="file" onchange="previewFile()"name="files"><br>
+                    <img src="" height="200" alt="Image preview..." id="imageShow" hidden><br>
+                    <input type="submit" class="btn btn-raised btn-danger" value="Upload File" name="submit">
+                </form>
             </div>
             <div class="col" style="text-align: center;">
                 <video id="video"> </video>
                 <image id="image1"> </image>
-
+                <div class="select">
+                    <label id="label"></label>
+                    <select id="select"></select>
+                </div>
+                <div class="row row-center">
+                    <button class="btn btn-raised btn-danger" id="button-take"> </button>
+                </div>
             </div>
         </div>
 
@@ -47,7 +57,6 @@
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
         crossorigin="anonymous"></script>
     <script src="src/js/camera.js"></script>
-    <script src="src/js/login.js"></script>
     <script>
         loadCamera()
     </script>

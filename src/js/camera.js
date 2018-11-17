@@ -19,33 +19,27 @@ function loadCamera() {
   // image.style.display = 'none';
   var row = createTag('div', 'row row-center');
 
-  var v = createTag('div', 'select');
-  var v1 = createTag('label', '', v);
-  v1.setAttribute('for', 'videoSource');
+  var select = document.getElementById('select');
+  var label = document.getElementById('label');
+  label.setAttribute('for', 'videoSource');
+  select.id = 'videoSource';
 
-  var se = createTag('select', '', v);
-  se.id = 'videoSource';
-
-  var row = createTag('div', 'row row-center');
-
-  buttonTake = createTag('button', 'btn btn-raised btn-danger ', row);
-  buttonTake.id = 'button-take';
+  var buttonTake = document.getElementById('button-take');
   buttonTake.innerHTML = '<i class="material-icons" onclick="loadCamera">photo_camera</i>';
 
+  // buttonRetake = createTag('button', 'btn btn-outline-success btn-sm', row);
+  // buttonRetake.id = 'button-retake';
+  // buttonRetake.innerHTML = 'Next';
+  // buttonRetake.style.display = 'none';
 
-  buttonRetake = createTag('button', 'btn btn-outline-success btn-sm', row);
-  buttonRetake.id = 'button-retake';
-  buttonRetake.innerHTML = 'Next';
-  buttonRetake.style.display = 'none';
-
-  row = createTag('div', 'row row-center');
-  buttonProceed = createTag('a', 'btn btn-outline-primary btn-sm', row);
-  buttonProceed.id = 'button-proceed'
-  buttonProceed.innerHTML = 'Proceed';
-  buttonProceed.onclick = function () {
-    clear();
-    loadPictureSummary();
-  };
+  // row = createTag('div', 'row row-center');
+  // buttonProceed = createTag('a', 'btn btn-outline-primary btn-sm', row);
+  // buttonProceed.id = 'button-proceed'
+  // buttonProceed.innerHTML = 'Proceed';
+  // buttonProceed.onclick = function () {
+  //   clear();
+  //   loadPictureSummary();
+  // };
 
   videoElement = document.querySelector('video');
   videoSelect = document.getElementById('videoSource');
@@ -120,9 +114,11 @@ function start() {
     canvas.getContext('2d')
       .drawImage(video, 0, 0, canvas.width, canvas.height);
     image.src = canvas.toDataURL();
+    images = []
     images.push(image.src)
     console.log(images)
     clear();
+    newPic()
     // result();
   }
 }
@@ -184,3 +180,29 @@ function uploadFile(){
   }
   document.getElementById("demo").innerHTML = txt;
 }
+
+function newPic() {
+  clear();
+  var contains = document.getElementById('main-container');
+  $(contains).append("<div id=\"tips\"style=\"text-align: center;\"> Use: Select/Take Photo </div> <div class=\"row\" id=\"row\" style=\"text-align: center;\"><div class=\"col\"><form method=\"post\" enctype=\"multipart/form-data\"><input type=\"file\" onchange=\"previewFile()\"name=\"files\"><br><img src=\"\" height=\"200\" alt=\"Image preview...\" id=\"imageShow\" hidden><br><input type=\"submit\" class=\"btn btn-raised btn-danger\" value=\"Upload File\" name=\"submit\"></form></div><div class=\"col\" style=\"text-align: center;\"><video id=\"video\"> </video><image id=\"image1\"> </image><div class=\"select\"><label id=\"label\"></label><select id=\"select\"></select></div><div class=\"row row-center\"><button class=\"btn btn-raised btn-danger\" id=\"button-take\"> </button></div></div></div>");
+  loadCamera()
+}
+
+function previewFile(){
+  var preview = document.querySelector('img'); //selects the query named img
+  var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+  var contains = document.getElementById('imageShow');
+  contains.hidden = false;
+  var reader  = new FileReader();
+
+  reader.onloadend = function () {
+      preview.src = reader.result;
+  }
+
+  if (file) {
+      reader.readAsDataURL(file); //reads the data as a URL
+  } else {
+      preview.src = "";
+  }
+}
+
