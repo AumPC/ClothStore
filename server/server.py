@@ -7,6 +7,8 @@ import requests
 import json
 import matplotlib.image as mpimg
 
+import model
+
 import base64
 
 app = Flask(__name__)
@@ -38,6 +40,36 @@ def save_file(data):
 def home():
     return ("Execution Server")
 
+@app.route("/send_person", methods=["POST"])
+def get_person():
+    command = request.form
+    image = command["image"].split(",")[1]
+    imgdata = base64.b64decode(image)
+    # with open("Picture/count.txt", 'r') as f:
+    #     count = int(f.read())
+    # filename = "Picture/" + str(count) + '.jpg'  # I assume you have a way of picking unique filenames
+    # with open(filename, 'wb') as f:
+    #     f.write(imgdata)
+    # img=mpimg.imread(filename)
+    filename = "person.jpg"
+    img = img[:,:,:3]
+    mpimg.imsave(filename, img)
+    
+    face_url = "https://face.recoqnitics.com/analyze"
+    fashion_url = "https://fashion.recoqnitics.com/analyze"
+    face_content = send_api(face_url, open(filename,'rb'))
+    fashion_content = send_api(fashion_url, open(filename,'rb'))
+    
+    print("Face : " , face_content)
+    print("Fashion : " , fashion_content)
+    content = face_content.copy()
+    for key in fashion_content:
+        content[key] = fashion_content[key]
+    print(content)
+    with open('person.json', 'w') as outfile:
+        json.dump(content, outfile)
+    return "Success"
+
 @app.route("/send_image", methods=["POST"])
 def get_image():
     command = request.form
@@ -64,10 +96,15 @@ def get_image():
         content[key] = fashion_content[key]
     print(content)
     save_file(content)
+    if count % 10 == 0:
+        model.learn()
     with open("Picture/count.txt", 'w') as f:
         f.write(str(count+1))
     return "Success"
 
+@app.route("/suggest", methods=["POST"])
+def suggest():
+    return model.suggest()
 
 if __name__ == '__main__':
     print("REST API is ready ... ")
