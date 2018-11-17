@@ -123,7 +123,7 @@
 
         </div>
         <script>
-            var data1 = d3.json("/src/json/test.json", function(error, data) {
+            var data1 = d3.json("/person.json", function(error, data) {
                 console.log(data);
                 createElements(data);
             });
@@ -161,14 +161,20 @@
                     path += "/56+";
                 }
                 
-                if(faceW/bodyW < 1/5) {
-                    size += " S";
+                if(faceW/bodyW < 1/8) {
+                    size += " XL";
+                }
+                else if(faceW/bodyW < 1/6) {
+                    size += " L";
                 }
                 else if(faceW/bodyW < 1/4) {
                     size += " M";
                 }
                 else if(faceW/bodyW < 1/3) {
-                    size += " L";
+                    size += " S";
+                }
+                else {
+                    size += " XS"
                 }
 
                 $('#sizespan').text(size);
