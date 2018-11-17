@@ -13,18 +13,49 @@
             var faceW = obj['faces'][0].boundingBox.w;
             var bodyW = obj['person'].boundingBox.w;
             var style = obj['person'].styles[0].styleName;
-
+        
             var size;
             if(faceW/bodyW < 1/5) {
-                size = "S"
+                size = "S";
             }
             else if(faceW/bodyW < 1/4) {
-                size = "M"
+                size = "M";
             }
             else if(faceW/bodyW < 1/3) {
-                size = "L"
+                size = "L";
+            }
+            
+            var path = "/src/pic";
+            if(gender == "Female") {
+                path += "/F";
+            }
+            else {
+                path += "/M";
+            }
+            
+            if(age > 0 && age <= 12) {
+                path += "/0-12";
+            }
+            else if(age > 12 && age <= 22) {
+                path += "/13-22";
+            }
+            else if(age > 22 && age <= 35) {
+                path += "/23-35";
+            }
+            else if(age > 35 && age <= 55) {
+                path += "/36-55";
+            }
+            else {
+                path += "/56+";
             }
 
+            path += "/" + style;
+            pathlist = [];
+            pathlist.push(path + "/1.jpg");
+            pathlist.push(path + "/2.jpg");
+            pathlist.push(path + "/3.jpg");
+            pathlist.push(path + "/4.jpg");
+            console.log(path)
             const mainDiv = document.createElement('div');
             mainDiv.classList.add('blog-post');
             const text = document.createElement('p');
@@ -52,6 +83,15 @@
             mainDiv.appendChild(text5);
             mainDiv.appendChild(text6);
             document.querySelector('body').appendChild(mainDiv);
+            const div2 = document.createElement('div');
+            div2.classList.add('picList');
+            for(var i = 0; i < 4 ; i++ ) {
+                var img = document.createElement("img");
+                img.setAttribute("src", pathlist[i]);
+                img.classList.add('pic');
+                div2.appendChild(img);
+            }
+            document.querySelector('body').appendChild(div2);
         }
         
     </script>
