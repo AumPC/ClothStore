@@ -11,7 +11,7 @@ var selectors = [];
 function loadCamera() {
   video = createTag('video');
   video.id = 'video'
-  video.width = video.offsetWidth;
+  video.width = 600;
   video.setAttribute('playsinline', true);
   video.setAttribute('autoplay', true);
 
