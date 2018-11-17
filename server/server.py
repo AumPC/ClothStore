@@ -7,11 +7,8 @@ import requests
 import json
 import matplotlib.image as mpimg
 
-<<<<<<< HEAD
-=======
 import model
 
->>>>>>> master
 import base64
 
 app = Flask(__name__)
@@ -48,13 +45,10 @@ def get_person():
     command = request.form
     image = command["image"].split(",")[1]
     imgdata = base64.b64decode(image)
-    # with open("Picture/count.txt", 'r') as f:
-    #     count = int(f.read())
-    # filename = "Picture/" + str(count) + '.jpg'  # I assume you have a way of picking unique filenames
-    # with open(filename, 'wb') as f:
-    #     f.write(imgdata)
-    # img=mpimg.imread(filename)
-    filename = "person.jpg"
+    filename = "../Picture/person.jpg"
+    with open(filename, 'wb') as f:
+        f.write(imgdata)
+    img=mpimg.imread(filename)
     img = img[:,:,:3]
     mpimg.imsave(filename, img)
     
@@ -69,7 +63,7 @@ def get_person():
     for key in fashion_content:
         content[key] = fashion_content[key]
     print(content)
-    with open('person.json', 'w') as outfile:
+    with open('../person.json', 'w') as outfile:
         json.dump(content, outfile)
     return "Success"
 
@@ -78,9 +72,9 @@ def get_image():
     command = request.form
     image = command["image"].split(",")[1]
     imgdata = base64.b64decode(image)
-    with open("Picture/count.txt", 'r') as f:
+    with open("../Picture/count.txt", 'r') as f:
         count = int(f.read())
-    filename = "Picture/" + str(count) + '.jpg'  # I assume you have a way of picking unique filenames
+    filename = "../Picture/" + str(count) + '.jpg'  # I assume you have a way of picking unique filenames
     with open(filename, 'wb') as f:
         f.write(imgdata)
     img=mpimg.imread(filename)
