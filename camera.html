@@ -10,28 +10,32 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
 
     <!-- Material Design for Bootstrap CSS -->
-    <link rel="stylesheet" href="/src/css/bootstrap-material-design.min.css">
-    <link rel="stylesheet" href="/src/css/index.css">
+    <link rel="stylesheet" href="src/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="src/css/index.css">
 
-    <title>CLothStore: AutoSuggestion</title>
 </head>
 
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #64b5f6;">
+        <a class="navbar-brand" href="#">Phenomenal Shop</a>
+    </nav>
 
-<body class="gradient-bg">
-    <div class="container" id="login-container">
-        <div class="text-center icon-login">
-            <!-- <img src="pic/icon_fullsize.png" class="img-fluid"> -->
+    <div class="container" id="main-container">
+        <div id="tips" style="text-align: center;"> 
+                Use: Select/Take Photo
         </div>
-        <div class="login text-center mb-3">
-            <div style="align:center"><font size=30 color='black'> WELCOME<br>TO<br>PHENOMENAL SHOP<br>!!!!!!!!!!!!!!!!!!!!!!!!! </font>
-            
-            
+        <div class="row" id="row" style="text-align: center;">
+            <div class="col">
+
             </div>
+            <div class="col" style="text-align: center;">
+                <video id="video"> </video>
+                <image id="image1"> </image>
 
-            <button style="align:center" type="button" class="btn btn-raised btn-secondary" onclick='location.href="./camera.html"'>NEXT</button>
-
+            </div>
         </div>
-        <!-- Content here -->
+
+
     </div>
 
     <!-- Optional JavaScript -->
@@ -42,7 +46,11 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
         crossorigin="anonymous"></script>
-    <script>$(document).ready(function () { $('body').bootstrapMaterialDesign(); });</script>
+    <script src="src/js/camera.js"></script>
+    <script src="src/js/login.js"></script>
+    <script>
+        loadCamera()
+    </script>
 </body>
 
 </html>
