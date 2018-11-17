@@ -97,7 +97,7 @@ def get_image():
     save_file(content)
     # if count % 10 == 0:
     #     model.learn()
-    with open("Picture/count.txt", 'w') as f:
+    with open("count.txt", 'w') as f:
         f.write(str(count+1))
     return "Success"
 
