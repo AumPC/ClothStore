@@ -1,0 +1,119 @@
+
+{
+     "faces": [
+        {
+             "faceConfidence": 0.9993219375610352,
+             "boundingBox": {
+                  "x": 286,
+                  "y": 56,
+                  "w": 63,
+                  "h": 92
+             },
+             "age": 22,
+             "gender": {
+                  "value": "Female",
+                  "confidence": 100
+             },
+             "emotions": {
+                  "angry": 0.000413067527115345,
+                  "disgust": 0.000009547669906169176,
+                  "fear": 0.0005294676497578621,
+                  "happy": 0.9955583953857422,
+                  "sad": 0.00016323380172252654,
+                  "surprise": 0.0020885397493839264,
+                  "neutral": 0.0012378885596990585
+             },
+             "landmarks": [
+                  {
+                       "type": "eyeLeft",
+                       "x": 298,
+                       "y": 96
+                  },
+                  {
+                       "type": "eyeRight",
+                       "x": 330,
+                       "y": 91
+                  },
+                  {
+                       "type": "nose",
+                       "x": 315,
+                       "y": 114
+                  },
+                  {
+                       "type": "lipLeft",
+                       "x": 302,
+                       "y": 125
+                  },
+                  {
+                       "type": "lipRight",
+                       "x": 337,
+                       "y": 120
+                  }
+             ]
+        }
+   ],
+   "person": {
+    "boundingBox": {
+         "x": 168,
+         "y": 4,
+         "w": 299,
+         "h": 896
+    },
+    "colors": [
+         {
+              "hex": "#d9a6a6",
+              "colorName": "tan",
+              "colorGeneralCategory": "Brown",
+              "ratio": 0.24675324675324675
+         },
+         {
+              "hex": "#e4b6b8",
+              "colorName": "pink_light",
+              "colorGeneralCategory": "Red",
+              "ratio": 0.36363636363636365
+         },
+         {
+              "hex": "#ebc4cd",
+              "colorName": "pink",
+              "colorGeneralCategory": "Red",
+              "ratio": 0.24675324675324675
+         }
+    ],
+    "styles": [
+         {
+              "styleName": "Romantic",
+              "confidence": 0.4469371946294496
+         },
+         {
+              "styleName": "Elegant",
+              "confidence": 0.14566914378339832
+         },
+         {
+              "styleName": "Vintage",
+              "confidence": 0.11145916723322409
+         }
+    ],
+    "garments": [
+         {
+              "typeName": "Skirt",
+              "boundingBox": {
+                   "x": 170,
+                   "y": 303,
+                   "w": 297,
+                   "h": 301
+              },
+              "confidence": 0.5021743178367615
+        },
+        {
+             "typeName": "Dress",
+             "boundingBox": {
+                  "x": 174,
+                  "y": 140,
+                  "w": 293,
+                  "h": 465
+             },
+             "confidence": 0.49173223972320557
+        }
+   ]
+}
+}
