@@ -123,7 +123,7 @@
 
         </div>
         <script>
-            var data1 = d3.json("/person.json", function(error, data) {
+            var data1 = d3.json("server/person.json", function(error, data) {
                 console.log(data);
                 createElements(data);
             });

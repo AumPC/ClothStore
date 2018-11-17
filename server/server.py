@@ -44,7 +44,7 @@ def get_person():
     command = request.form
     image = command["image"].split(",")[1]
     imgdata = base64.b64decode(image)
-    filename = "Picture/person.jpg"
+    filename = "person.jpg"
     with open(filename, 'wb') as f:
         f.write(imgdata)
     img=mpimg.imread(filename)
@@ -71,9 +71,12 @@ def get_image():
     command = request.form
     image = command["image"].split(",")[1]
     imgdata = base64.b64decode(image)
-    with open("../Picture/count.txt", 'r') as f:
+    f = open("haha.txt", "w")
+    f.write("haha")
+    f.close()
+    with open("count.txt", 'r') as f:
         count = int(f.read())
-    filename = "../Picture/" + str(count) + '.jpg'  # I assume you have a way of picking unique filenames
+    filename = str(count) + '.jpg'  # I assume you have a way of picking unique filenames
     with open(filename, 'wb') as f:
         f.write(imgdata)
     img=mpimg.imread(filename)
